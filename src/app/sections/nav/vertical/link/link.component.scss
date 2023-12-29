@@ -1,0 +1,21 @@
+.nav-link {
+  .current {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 15%;
+      left: 0;
+      width: 3px;
+      height: 70%;
+      background-color: white;
+    }
+  }
+  transition: transform 0.2s ease-in-out;
+  &:hover {
+    transform: scale(1.15) translateX(8px);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

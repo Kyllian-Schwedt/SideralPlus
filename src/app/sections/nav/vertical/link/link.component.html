@@ -1,0 +1,13 @@
+<li class="nav-link">
+    <a routerLink="{{link.path}}" class="group relative flex items-center p-4 hover:opacity-100">
+      <fa-icon [icon]="link.icon" [ngClass]="{ 'fill-white opacity-100 current': link.isCurrent,
+      'z-30 mx-auto h-6 w-6 group-hover:fill-white group-hover:text-white': true}"></fa-icon>
+      <div class="absolute inset-y-0 left-0 z-20 w-2/3 bg-background-dark"></div>
+      <span [ngClass]="{'ml-16 opacity-100': isHovered,
+       'left-0 opacity-0': !isHovered,
+       'text-white': link.isCurrent,
+       'text transition-smooth absolute z-10 grid h-full w-full items-center text-lg group-hover:text-white': true}">
+        {{link.name}}
+      </span>
+    </a>
+</li>

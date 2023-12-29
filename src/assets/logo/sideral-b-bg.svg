@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 28 28">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        fill: url(#Dégradé_sans_nom);
+      }
+
+      .cls-4 {
+        fill: none;
+      }
+
+      .cls-5 {
+        fill: #1a1d29;
+      }
+
+      .cls-2 {
+        font-family: Waltograph, Waltograph;
+        font-size: 8.5px;
+      }
+    </style>
+    <radialGradient id="Dégradé_sans_nom" data-name="Dégradé sans nom" cx="0" cy="28" fx="0" fy="28" r="1" gradientTransform="translate(24.08 522.33) scale(18.16 -18.16)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".03" stop-color="#cbffff"/>
+      <stop offset=".06" stop-color="#96ffff"/>
+      <stop offset=".08" stop-color="#68ffff"/>
+      <stop offset=".11" stop-color="#43ffff"/>
+      <stop offset=".14" stop-color="#25ffff"/>
+      <stop offset=".16" stop-color="#1ff"/>
+      <stop offset=".19" stop-color="#04ffff"/>
+      <stop offset=".22" stop-color="aqua"/>
+      <stop offset="1" stop-color="blue" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g id="Artboard1">
+    <rect class="cls-5" width="28" height="28"/>
+    <g id="Disney-Plus">
+      <g>
+        <text class="cls-2" transform="translate(3.05 18.33)"><tspan x="0" y="0">Sideral</tspan></text>
+        <path class="cls-1" d="M26.43,16.3v.32c0,.07-.05,.12-.12,.12h-1.5c0,.08,0,.15,0,.21,0,.47-.02,.85-.06,1.27,0,.06-.06,.11-.12,.11h-.32s-.06-.01-.09-.04-.03-.06-.03-.09c.05-.43,.07-.8,.07-1.26,0-.07,0-.14,0-.21h-1.49c-.07,0-.12-.05-.12-.12v-.32c0-.07,.05-.12,.12-.12h1.46c-.03-.51-.09-1.01-.19-1.51,0-.03,0-.06,.02-.09,.02-.02,.05-.04,.08-.04h.35c.05,0,.1,.04,.11,.09,.1,.52,.16,1.02,.19,1.54h1.52c.07,0,.12,.06,.12,.12Z"/>
+        <g>
+          <path class="cls-4" d="M6.34,12.13h0m-.02,0s-.01,0-.02,0c0,0,.01,0,.02,0h0Zm0,0s-.01,0-.02,0c0,0,.01,0,.02,0h0Z"/>
+          <path class="cls-3" d="M24.38,13.79c-.78-1.91-2.09-3.54-3.79-4.71-1.75-1.2-3.79-1.83-5.92-1.83-3.52,0-6.78,1.75-8.73,4.67-.02,.03-.03,.07-.01,.11,.01,.04,.04,.06,.08,.08l.27,.09s.03,0,.05,0c.05,0,.1-.03,.13-.07,.89-1.31,2.1-2.41,3.5-3.16,1.44-.78,3.07-1.19,4.72-1.19,1.99,0,3.91,.59,5.55,1.7,1.6,1.08,2.85,2.59,3.6,4.37,.02,.05,.07,.09,.13,.09h.32s.07-.02,.09-.05c.02-.03,.03-.07,.01-.11Zm-18.06-1.66s-.01,0-.02,0c0,0,.01,0,.02,0h0Zm17.56,1.77s.01,0,.02,.01c0,0-.01,0-.02-.01Z"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

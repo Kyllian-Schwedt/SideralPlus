@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 28 28">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        font-family: Waltograph, Waltograph;
+        font-size: 25px;
+      }
+
+      .cls-3 {
+        fill: url(#Dégradé_sans_nom);
+      }
+
+      .cls-4 {
+        fill: none;
+      }
+    </style>
+    <radialGradient id="Dégradé_sans_nom" data-name="Dégradé sans nom" cx=".04" cy="28.16" fx=".04" fy="28.16" r="1.25" gradientTransform="translate(24.08 522.33) scale(18.16 -18.16)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset=".03" stop-color="#cbffff"/>
+      <stop offset=".06" stop-color="#96ffff"/>
+      <stop offset=".08" stop-color="#68ffff"/>
+      <stop offset=".11" stop-color="#43ffff"/>
+      <stop offset=".14" stop-color="#25ffff"/>
+      <stop offset=".16" stop-color="#1ff"/>
+      <stop offset=".19" stop-color="#04ffff"/>
+      <stop offset=".22" stop-color="aqua"/>
+      <stop offset="1" stop-color="blue" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <g id="Artboard1">
+    <g id="Disney-Plus">
+      <g>
+        <path class="cls-1" d="M27.75,14.03v.39c0,.09-.07,.16-.16,.16h-1.88c0,.1,0,.19,0,.27,0,.58-.02,1.06-.08,1.59,0,.08-.07,.14-.15,.14h-.41s-.08-.02-.11-.05-.04-.07-.04-.11c.06-.53,.08-1,.08-1.57,0-.08,0-.17,0-.27h-1.86c-.09,0-.16-.07-.16-.16v-.39c0-.09,.07-.16,.16-.16h1.83c-.04-.64-.12-1.26-.24-1.89,0-.04,0-.08,.03-.11,.02-.03,.06-.05,.1-.05h.44c.07,0,.13,.05,.14,.12,.12,.65,.2,1.28,.24,1.92h1.9c.08,0,.16,.07,.16,.16Z"/>
+        <g>
+          <path class="cls-4" d="M2.65,8.83h0m-.02,0s-.02,0-.03,0c0,0,.02,0,.03,0h0Zm0,0s-.02,0-.03,0c0,0,.02,0,.03,0h0Z"/>
+          <path class="cls-3" d="M25.19,10.91c-.97-2.38-2.61-4.42-4.74-5.88-2.18-1.5-4.74-2.29-7.4-2.29-4.39,0-8.47,2.18-10.9,5.84-.03,.04-.03,.09-.02,.13,.01,.05,.05,.08,.1,.1l.34,.12s.04,0,.06,0c.06,0,.12-.03,.16-.08,1.12-1.64,2.63-3.01,4.37-3.95,1.8-.97,3.84-1.49,5.89-1.49,2.49,0,4.88,.73,6.94,2.12,2,1.35,3.56,3.24,4.5,5.46,.03,.07,.09,.11,.16,.11h.41s.09-.02,.12-.06c.03-.04,.04-.09,.02-.13ZM2.63,8.83s-.02,0-.03,0c0,0,.02,0,.03,0h0Zm21.94,2.21s.02,.01,.03,.01c0,0-.02,0-.03-.01Z"/>
+        </g>
+      </g>
+    </g>
+    <text class="cls-2" transform="translate(4.38 23.32)"><tspan x="0" y="0">S</tspan></text>
+  </g>
+</svg>

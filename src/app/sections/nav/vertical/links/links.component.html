@@ -1,0 +1,5 @@
+<ul class="nav-links" (mouseenter)="setHovered(true)"
+    (mouseleave)="setHovered(false)">
+  <app-link *ngFor="let link of links" [link]="link" [isHovered]="isHovered"></app-link>
+</ul>
+

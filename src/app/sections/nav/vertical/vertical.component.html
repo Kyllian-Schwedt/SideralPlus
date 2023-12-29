@@ -1,0 +1,13 @@
+<div [className]="isHovered ? 'opacity-100': 'opacity-0'" class="transition-smooth pointer-events-none fixed z-40 h-screen w-screen bg-gradient-to-r from-background-dark to-transparent`"></div>
+<nav class="sticky top-0 z-50 flex h-screen flex-col">
+    <a href="" class="py-12 px-6">
+      <img src="/assets/logo/sideral-b-l.svg" alt="logo"
+           width={68}
+           height={48}
+           sizes="100px" class="transition-smooth h-[48px] w-[68px] object-contain" />
+    </a>
+
+  <app-links [links]="links" class="mb-36 grid flex-1 items-center"></app-links>
+
+
+</nav>
