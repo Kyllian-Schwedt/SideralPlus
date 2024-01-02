@@ -1,7 +1,9 @@
-<div class="grid tablet:grid-cols-[auto,1fr]">
-  <aside class="hidden tablet:block">
-    <app-vertical></app-vertical>
-  </aside>
-  <main class="min-h-screen overflow-hidden tablet:overflow-visible w-1"></main>
-</div>
+<app-showing [media]="spotLightMedia"></app-showing>
+<app-content [type]="'primary'" class="flex flex-col">
+ <app-content-showing [media]="spotLightMedia"></app-content-showing>
+  <app-content [isSpacer]="true" class="flex flex-col mt-[50px]">
+    <div class="absolute top-0 -z-10 h-40 w-full -translate-y-[100%] bg-gradient-to-t from-background-dark to-transparent"></div>
+    <app-cards *ngFor="let collection of collections" [Medias]="collection.medias" [name]="collection.title" [pathCollection]="collection.path" class="space-y-3 tablet:space-y-4"></app-cards>
+  </app-content>
+</app-content>
 

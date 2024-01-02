@@ -11,6 +11,7 @@ import {faNotdef} from "@fortawesome/free-solid-svg-icons";
 export class LinkComponent {
   @Input() link: Link = {name: '', path: '', icon: faNotdef, childLinks: [], isCurrent: false};
   @Input() isHovered: boolean = false;
+  @Input() index: number = 0;
 
   constructor() {
   }

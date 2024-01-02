@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Link} from "../../../../interfaces/link";
 
 @Component({
@@ -10,6 +10,7 @@ export class LinksComponent implements OnInit {
   @Input() links: Link[] = [];
 
   isHovered: boolean = false;
+  @Output() isHoveredLinks = new EventEmitter<boolean>();
   constructor() {
   }
 
@@ -19,6 +20,8 @@ export class LinksComponent implements OnInit {
 
   setHovered(isHovered: boolean) {
     this.isHovered = isHovered;
+    this.isHoveredLinks.emit(isHovered);
+
   }
 
 }

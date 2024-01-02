@@ -1,1 +1,9 @@
-<router-outlet></router-outlet>
+<div class="grid tablet:grid-cols-[auto,1fr]">
+  <aside class="hidden tablet:block">
+    <app-vertical></app-vertical>
+  </aside>
+  <main class="min-h-screen overflow-hidden tablet:overflow-visible">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
