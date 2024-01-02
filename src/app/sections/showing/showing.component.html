@@ -1,0 +1,15 @@
+<section class="sticky -z-10 aspect-video max-h-screen w-full overflow-hidden tablet:top-0">
+  <div class="relative h-full w-full">
+    <app-playback
+      [videoId]="video"
+      *ngIf="video">
+    </app-playback>
+    <app-backdrop
+      [src]="image"
+      *ngIf="image && !video"
+    ></app-backdrop>
+    <div class="absolute inset-0 z-10 hidden bg-gradient-to-r from-background-dark to-transparent tablet:block"></div>
+    <div class="absolute inset-0 z-10 bg-gradient-to-t from-background-dark to-transparent"></div>
+    <div class="absolute inset-0 z-10 bg-gradient-to-t from-background-dark to-transparent"></div>
+  </div>
+</section>
