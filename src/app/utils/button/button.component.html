@@ -1,0 +1,19 @@
+<button
+  (click)="onClick.emit()"
+  [ngClass]="{
+    'bg-action-dark': variant.name === 'primary' && !variant.isInverted,
+    'bg-typography-light text-action-dark': variant.name === 'primary' && variant.isInverted,
+    'bg-action-brand text-typography-light': variant.name === 'secondary',
+    'w-full': isFull,
+    'h-12 rounded px-4': true
+  }">
+  <div class="mx-auto flex w-max items-center gap-2">
+    <ng-container *ngIf="variant.name === 'primary' && variant.type === 'watch'">
+      <fa-icon [icon]="faPlay" [className]="variant.isInverted ? 'fill-background-dark' : 'fill-typography-light'"></fa-icon>
+    </ng-container>
+    <ng-container *ngIf="variant.name === 'primary' && variant.type === 'save'">
+      <fa-icon [icon]="faPlus" [className]="variant.isInverted ? 'fill-background-dark' : 'fill-typography-light'"></fa-icon>
+    </ng-container>
+    <ng-content></ng-content>
+  </div>
+</button>
