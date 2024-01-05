@@ -1,0 +1,10 @@
+<div class="absolute inset-0 bg-background-dark">
+  <img
+    [ngSrc]="src ? 'https://image.tmdb.org/t/p/original/'+src : 'src/assets/logo/sideral-b-l.svg'"
+    alt="Showcase"
+    fill="blur"
+    sizes="100vw"
+    priority="true"
+    [class]="src ? 'opacity-100 object-cover brightness-110 transition-all duration-1000 ease-in' : 'default-logo'"
+  >
+</div>
