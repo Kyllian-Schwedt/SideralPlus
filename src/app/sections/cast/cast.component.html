@@ -1,0 +1,16 @@
+<div class="relative aspect-[79/105] w-28 overflow-hidden rounded tablet:w-auto m-2">
+  <a *ngIf="cast; else loading" [routerLink]="['/person', cast.id]" class="block">
+    <img [ngSrc]="'https://image.tmdb.org/t/p/w500'+cast.profile_path" fill="" sizes="28vw" [alt]="cast.name" class="transition-smooth object-cover hover:brightness-[130%]">
+  </a>
+  <div class="absolute bottom-0 left-0 right-0 text-center bg-gradient-to-t from-background-dark p-2">
+    <p class="text-xs font-semibold tablet:text-base">{{cast.name}}</p>
+    <small class="text-ms font-semibold text-gray-500 tablet:text-xs overflow-hidden">
+      {{cast.character}}
+    </small>
+  </div>
+  <ng-template #loading>
+    <div class="block aspect-[79/105]">
+      <div class="absolute inset-0 animate-pulse bg-card-dark"></div>
+    </div>
+  </ng-template>
+</div>
