@@ -1,0 +1,16 @@
+<form class="tablet:pr-6" (submit)="handleSendQuery($event)">
+  <div class="flex items-center gap-4 rounded bg-card-dark px-5 py-3">
+    <fa-icon [icon]="faSearch" class="h-6 w-6"></fa-icon>
+    <input
+      type="text"
+      name="searchQuery"
+      placeholder="Search Movies and Series"
+      [(ngModel)]="query"
+      (input)="onInputChange(($event.target))"
+      class="h-full w-full bg-transparent focus:outline-none"
+    />
+    <button *ngIf="query" (click)="handleSendQuery($event)">
+      <fa-icon [icon]="faArrowRight" class="h-6 w-6"></fa-icon>
+    </button>
+  </div>
+</form>

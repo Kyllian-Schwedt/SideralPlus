@@ -1,0 +1,4 @@
+<app-content [type]="'secondary'">
+  <app-searchbar (queryEvent)="handleQueryEvent($event)" [query]="queryUrl"></app-searchbar>
+  <app-cards-grid [medias]="medias"  [loadingCards]="loadingCards"></app-cards-grid>
+</app-content>
