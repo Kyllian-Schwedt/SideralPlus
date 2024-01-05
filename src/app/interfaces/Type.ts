@@ -1,1 +1,1 @@
-export type Type = 'movies' | 'series' | 'all';
+export type Type = 'movie' | 'tv' | 'all' | 'multi';

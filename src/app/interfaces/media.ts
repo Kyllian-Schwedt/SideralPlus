@@ -6,7 +6,7 @@ export interface Media {
   id: number;
   title: string;
   isForAdult: boolean;
-  type: "movies" | "series";
+  type: "movie" | "tv";
   image?: Image;
   overview: string;
   releasedAt?: string;
