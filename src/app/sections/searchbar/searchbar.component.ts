@@ -1,8 +1,6 @@
 import {Component, Output, EventEmitter, Input, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
 import {faArrowRight, faSearch} from "@fortawesome/free-solid-svg-icons";
-import {ThemoviedbService} from "../../themoviedb.service";
-import {delay, Subject, takeUntil} from 'rxjs';
+import {Subject, takeUntil} from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 @Component({
   selector: 'app-searchbar',
@@ -15,7 +13,7 @@ export class SearchbarComponent implements OnInit{
   searchInput = new Subject<string>();
   private formSubmitted = new Subject<void>();
 
-  constructor(private router: Router, private themoviedbService: ThemoviedbService) {}
+  constructor() {}
 
   handleSendQuery(event: Event): void {
     event.preventDefault();
