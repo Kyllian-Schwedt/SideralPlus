@@ -1,4 +1,14 @@
-import {AfterViewInit, Component, Input, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+  ViewChild
+} from '@angular/core';
 import {DomSanitizer} from "@angular/platform-browser";
 import { HostListener } from '@angular/core';
 import {YouTubePlayer} from "@angular/youtube-player";
@@ -8,7 +18,7 @@ import {YouTubePlayer} from "@angular/youtube-player";
   templateUrl: './playback.component.html',
   styleUrls: ['./playback.component.scss']
 })
-export class PlaybackComponent implements AfterViewInit, OnDestroy{
+export class PlaybackComponent implements AfterViewInit, OnDestroy, AfterViewChecked {
   @Input() videoId: string = '';
   @ViewChild(YouTubePlayer, { static: false }) youtubePlayer!: YouTubePlayer;
   private intervalId?: number;
@@ -29,6 +39,12 @@ export class PlaybackComponent implements AfterViewInit, OnDestroy{
   ngOnDestroy() {
     if (this.intervalId) {
       window.clearInterval(this.intervalId);
+    }
+  }
+
+  ngAfterViewChecked() {
+    if (this.youtubePlayer) {
+      this.youtubePlayer.mute();
     }
   }
 }
