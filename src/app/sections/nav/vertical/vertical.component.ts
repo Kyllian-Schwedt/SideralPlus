@@ -17,8 +17,8 @@ export class VerticalComponent {
     {name: 'Profile', path: '/profile', icon: faUser, childLinks: [], isCurrent: false},
     {name: 'Home', path: '/', icon: faHouse, childLinks: [], isCurrent: false},
     {name: 'Search', path: '/search', icon: faSearch, childLinks: [], isCurrent: false},
-    {name: 'Series', path: '/series', icon: faTv, childLinks: [], isCurrent: false},
-    {name: 'Movies', path: '/movies', icon: faFilm, childLinks: [], isCurrent: false},
+    {name: 'Series', path: '/discover/series', icon: faTv, childLinks: [], isCurrent: false},
+    {name: 'Movies', path: '/discover/movies', icon: faFilm, childLinks: [], isCurrent: false},
     {name: 'My List', path: '/my-list', icon: faList, childLinks: [], isCurrent: false}
   ]
 
