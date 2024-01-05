@@ -10,16 +10,26 @@ import {ThemoviedbService} from "../../themoviedb.service";
 export class CardComponent implements OnInit {
   @Input() media!: Media;
   @Input() isGrid: boolean = false;
+  @Input() isVoidCardLoading: boolean = false;
   measure: any;
 
   constructor(private themoviedb: ThemoviedbService) {
   }
   ngOnInit() {
+    if(this.isVoidCardLoading) return;
     const type = this.media.type;
     const id = this.media.id;
 
-    this.themoviedb.getMediaMeasure(type, id.toString()).subscribe(measure => {
-      this.measure = measure;
-    });
+    if(this.isGrid && this.media) {
+      this.themoviedb.getMediaMeasure(type, id.toString()).subscribe(measure => {
+        this.measure = measure;
+      });
+    }
+  }
+
+  humanizeRuntime(runtime: number): string {
+    const hours = Math.floor(runtime / 60);
+    const minutes = runtime % 60;
+    return `${hours}h ${minutes}m`;
   }
 }

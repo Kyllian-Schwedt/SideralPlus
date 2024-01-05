@@ -1,7 +1,7 @@
 <div class="space-y-3 tablet:space-y-4">
   <span class="font-semibold tablet:text-2xl">{{name}}</span>
   <div class="group relative">
-    <drag-scroll #nav [scroll-x-wheel-enabled]="true" [scrollbar-hidden]="true" [drag-scroll-disabled]="false">
+    <drag-scroll #nav [drag-scroll-y-disabled]="true"  [draggable]="true"  (reachesLeftBound)="onReachesLeftBound($event)" (reachesRightBound)="onReachesRightBound($event)" [scrollbar-hidden]="isScrollHidden">
       <app-card *ngFor="let m of mediaList; let i = index" [media]="m" drag-scroll-item class="tablet:w-1/6 notebook:w-1/2"></app-card>
       <div *ngIf="pathCollection" class="tablet:w-1/6 notebook:w-1/2" drag-scroll-item>
         <a routerLink="{{pathCollection}}" class="m-2 relative block aspect-[79/105] w-28 overflow-hidden rounded tablet:w-auto">
@@ -13,19 +13,19 @@
       </div>
     </drag-scroll>
     <!-- Left Button -->
-    <div *ngIf="getCurrentIndex() > 0"
+    <div *ngIf="!reachesLeftBound"
          (click)="scrollToLeft()"
-         class="transition-smooth absolute inset-y-0 z-10 grid items-center overflow-hidden from-background-dark to-transparent tablet:w-[11%] tala:w-[8.1%] laptop:w-[6.8%] desktop:w-[5.55%] left-0 bg-gradient-to-r">
-      <div class="bg-gradient-to-r transition-smooth absolute inset-0 from-background-dark to-transparent opacity-0 group-hover:opacity-100"></div>
-      <fa-icon [icon]="faChevronRight" class="left-[10%] rotate-180 transition-smooth absolute h-6 w-6 stroke-2 text-white opacity-0 transition-opacity group-hover:opacity-100"></fa-icon>
+         class="transition-smooth absolute inset-y-0 z-10 grid items-center overflow-hidden from-background-dark to-transparent w-[11%] tala:w-[8.1%] laptop:w-[6.8%] desktop:w-[5.55%] left-0 bg-gradient-to-r">
+      <div class="bg-gradient-to-r transition-smooth absolute inset-0 from-background-dark to-transparent opacity-100"></div>
+      <fa-icon [icon]="faChevronRight" class="left-[10%] rotate-180 transition-smooth absolute h-6 w-6 stroke-2 text-white opacity-100 transition-opacity"></fa-icon>
     </div>
 
     <!-- Right Button -->
-    <div *ngIf="getCurrentIndex() < mediaList.length - 6"
+    <div *ngIf="!reachesRightBound"
          (click)="scrollToRight()"
-         class="transition-smooth absolute inset-y-0 z-10 grid items-center overflow-hidden from-background-dark to-transparent tablet:w-[11%] tala:w-[8.1%] laptop:w-[6.8%] desktop:w-[5.55%] right-0 bg-gradient-to-l">
-      <div class="bg-gradient-to-l transition-smooth absolute inset-0 from-background-dark to-transparent opacity-0 group-hover:opacity-100"></div>
-      <fa-icon [icon]="faChevronRight" class="right-[10%] transition-smooth absolute h-6 w-6 stroke-2 text-white opacity-0 transition-opacity group-hover:opacity-100"></fa-icon>
+         class="transition-smooth absolute inset-y-0 z-10 grid items-center overflow-hidden from-background-dark to-transparent w-[11%] tala:w-[8.1%] laptop:w-[6.8%] desktop:w-[5.55%] right-0 bg-gradient-to-l">
+      <div class="bg-gradient-to-l transition-smooth absolute inset-0 from-background-dark to-transparent opacity-100"></div>
+      <fa-icon [icon]="faChevronRight" class="right-[10%] transition-smooth absolute h-6 w-6 stroke-2 text-white opacity-100"></fa-icon>
     </div>
   </div>
 </div>

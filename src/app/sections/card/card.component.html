@@ -1,11 +1,12 @@
-<a *ngIf="media; else loading" [href]="'/' + media.type + '/' + media.id" class="relative block aspect-[79/105] w-28 overflow-hidden rounded tablet:w-auto m-2">
-  <img [ngSrc]="'https://image.tmdb.org/t/p/w500'+media.image?.poster" fill="" sizes="28vw" [alt]="media.title" class="transition-smooth object-cover hover:brightness-[130%]">
+<a *ngIf="media; else loading" [routerLink]="'/'+(media.type === 'movie'? 'movies' : 'series' )+ '/' + media.id" class="relative block aspect-[79/105] w-28 overflow-hidden rounded tablet:w-auto m-2">
+  <img [ngSrc]="'https://image.tmdb.org/t/p/w500'+media.image?.poster" sizes="28vw" [alt]="media.title" class="transition-smooth object-cover hover:brightness-[130%]" width="500" height="750"
+       priority="">
 </a>
 <div *ngIf="isGrid">
   <p class="text-xs font-semibold tablet:text-base">{{media.title}}</p>
   <small class="text-ms font-semibold text-gray-500 tablet:text-xs">
     {{media.releasedAt?.slice(0, 4) ? media.releasedAt?.slice(0, 4) : 'New'}} •
-    {{media.type === 'movies' ? 'humanizeRuntime(measure)' : measure + ' Seasons'}}
+    {{media.type === 'movie' ? humanizeRuntime(measure) : measure + ' Seasons'}}
   </small>
 </div>
 <ng-template #loading>

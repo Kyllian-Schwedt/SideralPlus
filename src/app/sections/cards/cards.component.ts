@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
 import {DragScrollComponent} from "ngx-drag-scroll";
 import {Observable} from "rxjs";
 import {Media} from "../../interfaces/media";
@@ -9,15 +9,33 @@ import {faArrowAltCircleRight, faChevronRight, faList} from "@fortawesome/free-s
   templateUrl: './cards.component.html',
   styleUrls: ['./cards.component.scss']
 })
-export class CardsComponent implements OnInit{
-  @ViewChild('nav', { read: DragScrollComponent }) ds: DragScrollComponent | undefined;
+export class CardsComponent implements OnInit, OnChanges {
+  @ViewChild('nav', {read: DragScrollComponent, static: true}) ds: DragScrollComponent | undefined;
   @Input() Medias!: Observable<Media[]>;
   @Input() name: string = '';
   @Input() pathCollection?: string;
 
+  reachesRightBound: boolean = false;
+  reachesLeftBound: boolean = false;
+
+  onReachesLeftBound(event: boolean): void {
+    this.reachesLeftBound = event;
+  }
+
+  onReachesRightBound(event: boolean): void {
+    this.reachesRightBound = event;
+  }
+
+
   mediaList: Media[] = [];
 
   constructor() {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['Medias'] && !changes['Medias'].firstChange) {
+      this.ngOnInit()
+    }
   }
 
   ngOnInit(): void {
@@ -40,11 +58,8 @@ export class CardsComponent implements OnInit{
     this.ds?.moveTo(this.ds.currIndex + incr);
   }
 
-  getCurrentIndex(): number {
-    return this.ds?.currIndex ?? 0;
-  }
-
   protected readonly faChevronRight = faChevronRight;
   protected readonly faList = faList;
   protected readonly faArrowAltCircleRight = faArrowAltCircleRight;
+  isScrollHidden: boolean = true;
 }

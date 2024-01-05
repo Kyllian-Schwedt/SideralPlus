@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule, HammerModule} from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +24,14 @@ import {DragScrollComponent, DragScrollItemDirective} from "ngx-drag-scroll";
 import { SearchComponent } from './pages/search/search.component';
 import { SearchbarComponent } from './sections/searchbar/searchbar.component';
 import { CardsGridComponent } from './sections/cards-grid/cards-grid.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { LoadingCardComponent } from './sections/card/loading-card/loading-card.component';
+import { MoviesComponent } from './pages/movies/movies.component';
+import { MoviesDetailsComponent } from './pages/movies/movies-details/movies-details.component';
+import { SeriesComponent } from './pages/series/series.component';
+import { CastComponent } from './sections/cast/cast.component';
+import { CastsComponent } from './sections/casts/casts.component';
+import { SeriesDetailsComponent } from './pages/series/series-details/series-details.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +50,15 @@ import { CardsGridComponent } from './sections/cards-grid/cards-grid.component';
     CardsComponent,
     SearchComponent,
     SearchbarComponent,
-    CardsGridComponent
+    CardsGridComponent,
+    LoadingCardComponent,
+    MoviesComponent,
+    MoviesDetailsComponent,
+    SeriesComponent,
+    CastComponent,
+    CastsComponent,
+    CastsComponent,
+    SeriesDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +69,10 @@ import { CardsGridComponent } from './sections/cards-grid/cards-grid.component';
     BrowserAnimationsModule,
     NgOptimizedImage,
     DragScrollComponent,
-    DragScrollItemDirective
+    DragScrollItemDirective,
+    FormsModule,
+    ReactiveFormsModule,
+    HammerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
