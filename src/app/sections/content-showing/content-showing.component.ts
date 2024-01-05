@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Media } from '../../interfaces/media';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {Media} from '../../interfaces/media';
 import {ThemoviedbService} from "../../themoviedb.service";
 import {Observable} from "rxjs";
 
@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
   templateUrl: './content-showing.component.html',
   styleUrls: ['./content-showing.component.scss']
 })
-export class ContentShowingComponent implements OnInit {
+export class ContentShowingComponent implements OnInit, OnChanges {
   @Input() media!: Observable<Media>;
   @Input() isMediaSelected!: boolean;
   mediaRes: Media | undefined;
@@ -16,7 +16,14 @@ export class ContentShowingComponent implements OnInit {
   measure: any;
   language: any;
 
-  constructor(private themoviedb: ThemoviedbService) { }
+  constructor(private themoviedb: ThemoviedbService) {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+      if (changes['media'] && !changes['media'].firstChange) {
+        this.ngOnInit()
+      }
+    }
 
 ngOnInit() {
   this.media.subscribe(media => {
@@ -36,7 +43,7 @@ ngOnInit() {
 }
 
   convertLanguage(language: string) {
-    // Implement the convertLanguage function here
+    //TODO implement language conversion
   }
 
   humanizeRuntime(runtime: number): string {
