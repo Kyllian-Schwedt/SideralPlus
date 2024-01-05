@@ -1,0 +1,24 @@
+<app-showing [media]="spotlightMedia"></app-showing>
+<app-content [type]="'primary'" [id]="this.id" class="flex flex-col">
+  <app-content-showing [media]="spotlightMedia" [isMediaSelected]="true"></app-content-showing>
+  <app-content [isSpacer]="true" class="flex flex-col mt-[50px]">
+    <div class="absolute top-0 -z-10 h-40 w-full -translate-y-[100%] bg-gradient-to-t from-background-dark to-transparent"></div>
+    <app-cards [name]="'More like this'" [Medias]="similarMedias"></app-cards>
+    <app-casts [name]="'Casting'" [Casts]="castList"></app-casts>
+<div *ngFor="let season of seasons | async; let i = index" class="m-2 grid grid-cols-1 tablet:grid-cols-[auto,1fr] gap-4">
+  <div class="relative block aspect-[79/105] overflow-hidden rounded tablet:w-auto">
+    <img [ngSrc]="'https://image.tmdb.org/t/p/w500'+season.poster_path" fill="" sizes="28vw" [alt]="season.name" class="transition-smooth object-cover hover:brightness-[130%]" style="width: 100%; height: 100%; object-fit: cover; position: static !important;">
+  </div>
+  <div>
+    <div class="text-xs font-semibold tablet:text-base">{{season.name}}</div>
+    <small class="text-ms font-semibold text-gray-500 tablet:text-xs">
+      {{season.air_date.slice(0, 4) ? season.air_date.slice(0, 4) : 'New'}} •
+      {{season.episode_count}} Episodes
+    </small>
+    <p class="text-ms font-semibold text-gray-500 tablet:text-xs">
+      {{season.overview}}
+    </p>
+  </div>
+</div>
+  </app-content>
+</app-content>
