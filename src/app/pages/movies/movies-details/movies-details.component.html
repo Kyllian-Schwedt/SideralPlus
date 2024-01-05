@@ -1,0 +1,9 @@
+<app-showing [media]="spotlightMedia"></app-showing>
+<app-content [type]="'primary'" [id]="this.id" class="flex flex-col">
+  <app-content-showing [media]="spotlightMedia" [isMediaSelected]="true"></app-content-showing>
+  <app-content [isSpacer]="true" class="flex flex-col mt-[50px]">
+    <div class="absolute top-0 -z-10 h-40 w-full -translate-y-[100%] bg-gradient-to-t from-background-dark to-transparent"></div>
+    <app-cards [name]="'More like this'" [Medias]="similarMedias"></app-cards>
+    <app-casts [name]="'Casting'" [Casts]="castList"></app-casts>
+  </app-content>
+</app-content>
