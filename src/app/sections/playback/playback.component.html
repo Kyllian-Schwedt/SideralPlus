@@ -1,4 +1,4 @@
-<youtube-player [videoId]="videoId" [playerVars]="{
+<youtube-player *ngIf="videoId !== ''" [videoId]="videoId" [playerVars]="{
     autoplay: 1,
     loop: 1,
     controls: 0,

@@ -25,11 +25,6 @@ export class MylistComponent {
     this.currentSelectedMedia = null;
   }
 
-  ngOnInit(): void {
-    if (this.user) {
-    }
-  }
-
   onMediaSelected(media: Media): void {
     this.currentSelectedMedia = media;
     this.selectedMedia = new Observable<Media>(subscriber => {
