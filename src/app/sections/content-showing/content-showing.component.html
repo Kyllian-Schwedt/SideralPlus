@@ -2,29 +2,30 @@
   <!-- Logo -->
   <div class="relative tablet:aspect-square">
     <div [style.aspectRatio]="logo?.aspectRatio ? logo?.aspectRatio : '1.84 / 1'" class="relative bottom-0 max-h-56 w-full tablet:absolute">
-      <img [ngSrc]="logo?.image ? 'https://image.tmdb.org/t/p/w500' + logo.image : 'assets/logo/sideral-b-l.svg'" alt="{{mediaRes?.title}}" class="object-contain" [class]="logo ? '' : 'default-logo'" fill>
+      <img [ngSrc]="logo?.image ? 'https://image.tmdb.org/t/p/w500' + logo.image : 'assets/logo/sideral-b-l.svg'" alt="{{mediaRes?.title}}" class="object-contain" [class]="logo ? '' : 'default-logo'"
+           fill="">
     </div>
   </div>
-  <div class="space-y-4">
+  <div *ngIf="mediaRes" class="space-y-4">
     <!-- Details -->
     <div class="flex items-center gap-1 text-xs tablet:text-base">
       <p class="font-semibold">
-        {{ mediaRes?.releasedAt?.slice(0, 4) ? mediaRes?.releasedAt?.slice(0, 4) : 'New' }} |
-        {{ mediaRes?.type === 'movie' ? humanizeRuntime(measure) : measure + ' Seasons' }} |
-        {{ language?.original ? language?.original : 'English' }} |
+        {{ mediaRes.releasedAt?.slice(0, 4) ? mediaRes.releasedAt?.slice(0, 4) : 'New' }} |
+        {{ mediaRes.type === 'movie' ? humanizeRuntime(measure) : measure + ' Seasons' }} |
+        {{ language.original ? language?.original : 'English' }} |
       </p>
       <div class="rounded bg-rated-dark px-2 py-0.5 font-semibold tablet:py-0">
-        {{ mediaRes?.isForAdult ? '18+' : 'PG' }}
+        {{ mediaRes.isForAdult ? '18+' : 'PG' }}
       </div>
     </div>
     <!-- Overview -->
     <div class="overflow-y-auto scrollbar-none tablet:max-h-12">
-      <p class="text-xs tablet:text-base">{{ mediaRes?.overview }}</p>
+      <p class="text-xs tablet:text-base">{{ mediaRes.overview }}</p>
     </div>
   </div>
   <!-- Actions -->
-  <div class="flex gap-4">
+  <div *ngIf="mediaRes" class="flex gap-4">
     <app-button [variant]="{name: 'primary', type: 'watch', isInverted: isMediaSelected}">Watch Now</app-button>
-    <app-button [variant]="{name: 'primary', type: 'save', isInverted: isMediaSelected}">Save</app-button>
+    <app-button [variant]="{name: 'primary', type: isMovieInList? 'saved' : 'save', isInverted: isMediaSelected}" (onClick)="addToList(mediaRes)">{{isMovieInList? "Remove" : "Save"}}</app-button>
   </div>
 </section>

@@ -1,4 +1,4 @@
-<a *ngIf="media; else loading" [routerLink]="'/'+(media.type === 'movie'? 'movies' : 'series' )+ '/' + media.id" class="relative block aspect-[79/105] w-28 overflow-hidden rounded tablet:w-auto m-2">
+<a *ngIf="media; else loading" [routerLink]="preventLink ? null : '/'+(media.type === 'movie'? 'movies' : 'series' )+ '/' + media.id" class="relative block aspect-[79/105] w-28 overflow-hidden rounded tablet:w-auto m-2" (click)="emitClick($event)">
   <img [ngSrc]="'https://image.tmdb.org/t/p/w500'+media.image?.poster" sizes="28vw" [alt]="media.title" class="transition-smooth object-cover hover:brightness-[130%]" width="500" height="750"
        priority="">
 </a>

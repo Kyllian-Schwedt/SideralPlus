@@ -14,6 +14,9 @@
     <ng-container *ngIf="variant.name === 'primary' && variant.type === 'save'">
       <fa-icon [icon]="faPlus" [className]="variant.isInverted ? 'fill-background-dark' : 'fill-typography-light'"></fa-icon>
     </ng-container>
+    <ng-container *ngIf="variant.name === 'primary' && variant.type === 'saved'">
+      <fa-icon [icon]="faTimes" [className]="variant.isInverted ? 'fill-background-dark' : 'fill-typography-light'"></fa-icon>
+    </ng-container>
     <ng-content></ng-content>
   </div>
 </button>

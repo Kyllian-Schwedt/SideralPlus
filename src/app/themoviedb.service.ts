@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import {Observable, shareReplay} from 'rxjs';
 import { map } from 'rxjs/operators';
 import {Media} from "./interfaces/media";
-import {Time} from "@angular/common";
 import {Video} from "./interfaces/video";
 import {Type} from "./interfaces/Type";
 import {Logo} from "./interfaces/logo";
@@ -88,6 +87,12 @@ private mapMedia(media: any, type: string = media.media_type): Media {
   getMediaVideo(type: Type, id: string): Observable<Video> {
     return this.http.get<any>(`${TMDB_API_URL}/3/${type}/${id}/videos?api_key=${TMDB_API_KEY}&language=en-US`)
       .pipe(map(response => response.results.find((result: any) => (result.type === "Trailer" || result.type === "Teaser") && result.official)));
+  }
+
+  getMediasByIds(ids: string[]): Observable<Media[]> {
+    return this.http.get<any>(`${TMDB_API_URL}/3/find/${ids.join(",")}?api_key=${TMDB_API_KEY}&language=en-US&external_source=imdb_id`)
+      .pipe(map(response => response.movie_results.concat(response.tv_results).filter((media: any) => media.poster_path && media.backdrop_path && media.overview).map((media: any) => this.mapMedia(media))));
+
   }
 
   getMediaLogo(type: Type, id: string): Observable<Logo> {

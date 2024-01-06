@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
 import {DragScrollComponent} from "ngx-drag-scroll";
 import {Observable} from "rxjs";
 import {Media} from "../../interfaces/media";
@@ -14,6 +14,8 @@ export class CardsComponent implements OnInit, OnChanges {
   @Input() Medias!: Observable<Media[]>;
   @Input() name: string = '';
   @Input() pathCollection?: string;
+  @Input() preventLink: boolean = false;
+  @Output() onMediaSelected: EventEmitter<Media> = new EventEmitter<Media>();
 
   reachesRightBound: boolean = false;
   reachesLeftBound: boolean = false;
@@ -30,12 +32,17 @@ export class CardsComponent implements OnInit, OnChanges {
   mediaList: Media[] = [];
 
   constructor() {
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['Medias'] && !changes['Medias'].firstChange) {
       this.ngOnInit()
     }
+  }
+
+  handleClick(media: Media): void {
+      this.onMediaSelected.emit(media);
   }
 
   ngOnInit(): void {

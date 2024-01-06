@@ -1,8 +1,8 @@
 <div class="space-y-3 tablet:space-y-4">
   <span class="font-semibold tablet:text-2xl">{{name}}</span>
   <div class="group relative">
-    <drag-scroll #nav [drag-scroll-y-disabled]="true"  [draggable]="true"  (reachesLeftBound)="onReachesLeftBound($event)" (reachesRightBound)="onReachesRightBound($event)" [scrollbar-hidden]="isScrollHidden">
-      <app-card *ngFor="let m of mediaList; let i = index" [media]="m" drag-scroll-item class="tablet:w-1/6 notebook:w-1/2"></app-card>
+    <drag-scroll #nav [drag-scroll-y-disabled]="true"  [draggable]="true"  (reachesLeftBound)="onReachesLeftBound($event)" (reachesRightBound)="onReachesRightBound($event)"  [scrollbar-hidden]="isScrollHidden">
+      <app-card *ngFor="let m of mediaList; let i = index" [media]="m" drag-scroll-item class="tablet:w-1/6 notebook:w-1/2" (onClick)="handleClick($event)" [preventLink]="preventLink"></app-card>
       <div *ngIf="pathCollection" class="tablet:w-1/6 notebook:w-1/2" drag-scroll-item>
         <a routerLink="{{pathCollection}}" class="m-2 relative block aspect-[79/105] w-28 overflow-hidden rounded tablet:w-auto">
           <div class="absolute inset-0 animate-pulse bg-card-dark flex items-center justify-center flex-col">

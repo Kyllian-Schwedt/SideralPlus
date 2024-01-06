@@ -1,0 +1,8 @@
+<app-showing [media]="selectedMedia"></app-showing>
+<app-content [type]="'primary'" class="flex flex-col">
+  <app-content-showing [media]="selectedMedia" (addToListEvent)="onMediaListChanged($event)"></app-content-showing>
+  <app-content [isSpacer]="true" class="flex flex-col mt-[50px]">
+    <div class="absolute top-0 -z-10 h-40 w-full -translate-y-[100%] bg-gradient-to-t from-background-dark to-transparent"></div>
+    <app-cards  [Medias]="medias" [name]="'Your List'" (onMediaSelected)="onMediaSelected($event)" [preventLink]="true" class="space-y-3 tablet:space-y-4"></app-cards>
+  </app-content>
+</app-content>

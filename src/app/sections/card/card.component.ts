@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Media } from "../../interfaces/media";
 import {ThemoviedbService} from "../../themoviedb.service";
 
@@ -11,6 +11,8 @@ export class CardComponent implements OnInit {
   @Input() media!: Media;
   @Input() isGrid: boolean = false;
   @Input() isVoidCardLoading: boolean = false;
+  @Input() preventLink: boolean = false;
+  @Output() onClick = new EventEmitter<Media>();
   measure: any;
 
   constructor(private themoviedb: ThemoviedbService) {
@@ -32,4 +34,8 @@ export class CardComponent implements OnInit {
     const minutes = runtime % 60;
     return `${hours}h ${minutes}m`;
   }
+
+  emitClick($event: MouseEvent) {
+      this.onClick.emit(this.media);
+    }
 }
