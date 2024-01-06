@@ -1,0 +1,10 @@
+<nav class="fixed inset-x-0 bottom-0 z-50 tablet:hidden" style="padding: 10px;">
+  <ul class="absolute -top-10 left-1/2 flex -translate-x-1/2 items-center gap-5 rounded-full bg-black/80 px-4 py-2 text-2xl backdrop-blur">
+    <li *ngFor="let link of links">
+      <a [routerLink]="link.path" [ngClass]="{'fill-typography-light opacity-100': link.isCurrent, 'opacity-fade': !link.isCurrent}">
+        <fa-icon [icon]="link.icon" [ngClass]="{ 'fill-white opacity-100 current': link.isCurrent,
+      'z-30 mx-auto h-30 w-30 group-hover:fill-white group-hover:text-white': true}"></fa-icon>
+      </a>
+    </li>
+  </ul>
+</nav>

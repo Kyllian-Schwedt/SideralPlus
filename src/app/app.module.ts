@@ -32,6 +32,8 @@ import { SeriesComponent } from './pages/series/series.component';
 import { CastComponent } from './sections/cast/cast.component';
 import { CastsComponent } from './sections/casts/casts.component';
 import { SeriesDetailsComponent } from './pages/series/series-details/series-details.component';
+import { MobileNavComponent } from './sections/nav/mobile-nav/mobile-nav.component';
+import { MylistComponent } from './pages/mylist/mylist.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { SeriesDetailsComponent } from './pages/series/series-details/series-det
     CastComponent,
     CastsComponent,
     CastsComponent,
-    SeriesDetailsComponent
+    SeriesDetailsComponent,
+    MobileNavComponent,
+    MylistComponent
   ],
   imports: [
     BrowserModule,
