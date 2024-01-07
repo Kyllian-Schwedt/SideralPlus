@@ -1,5 +1,5 @@
 import {Component, OnInit, HostListener, Input} from '@angular/core';
-import { Media } from '../../interfaces/media';
+import {Media} from '../../interfaces/media';
 import {ThemoviedbService} from "../../themoviedb.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {take} from "rxjs";
@@ -10,7 +10,7 @@ import {Type} from "../../interfaces/Type";
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit{
+export class SearchComponent implements OnInit {
   @Input() type: Type = 'multi';
   medias: Media[] = [];
   protected query: string = '';
@@ -18,6 +18,10 @@ export class SearchComponent implements OnInit{
   private page: number = 1;
   protected loadingCards: number = 0;
 
+  /**
+   * Handle the query event from the search bar component
+   * @param query
+   */
   handleQueryEvent(query: string): void {
     this.medias = [];
     this.page = 1;
@@ -34,12 +38,11 @@ export class SearchComponent implements OnInit{
     console.log(this.query);
   }
 
-  constructor(private themoviedbService: ThemoviedbService, private route: ActivatedRoute, private router: Router) {
-
-  }
+  constructor(private themoviedbService: ThemoviedbService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit(): void {
     this.route.params.pipe(take(1)).subscribe(params => {
+      // If there is a query in the url, we query the API to keep the query (example :  you want to share a search to a friend )
       if (params['query']) {
         const queryUrl = decodeURIComponent(params['query']);
         this.queryUrl = queryUrl.split('-').join(' ');
@@ -49,12 +52,16 @@ export class SearchComponent implements OnInit{
     });
   }
 
+  /**
+   * Query medias from the API and append them to the medias array
+   * @param query
+   */
   queryMedia(query: string) {
     this.loadingCards = 2;
     this.themoviedbService.searchMediasByType(query, this.type, this.page).subscribe((medias: Media[]) => {
       this.medias = [...this.medias, ...medias];
       if (medias.length === 0) {
-        console.log('No more medias '+this.page + ' query: ' + query + ' type: ' + this.type);
+        console.log('No more medias ' + this.page + ' query: ' + query + ' type: ' + this.type);
         this.loadingCards = 0;
       }
     });

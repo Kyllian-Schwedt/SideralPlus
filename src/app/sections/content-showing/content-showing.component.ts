@@ -23,28 +23,28 @@ export class ContentShowingComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-      if (changes['media'] && !changes['media'].firstChange) {
-        this.ngOnInit()
-      }
+    if (changes['media'] && !changes['media'].firstChange) {
+      this.ngOnInit()
     }
+  }
 
-ngOnInit() {
+  ngOnInit() {
     this.media.subscribe(media => {
       this.isMovieInList = this.userStorageService.isMovieInWatchList(media.id)
       this.mediaRes = media;
       const type = media.type;
       const id = media.id;
-    this.language = media.language;
+      this.language = media.language;
 
-    this.themoviedb.getMediaLogo(type, id.toString()).subscribe(logo => {
-      this.logo = logo;
-    });
+      this.themoviedb.getMediaLogo(type, id.toString()).subscribe(logo => {
+        this.logo = logo;
+      });
 
-    this.themoviedb.getMediaMeasure(type, id.toString()).subscribe(measure => {
-      this.measure = measure;
+      this.themoviedb.getMediaMeasure(type, id.toString()).subscribe(measure => {
+        this.measure = measure;
+      });
     });
-  });
-}
+  }
 
   convertLanguage(language: string) {
     //TODO implement language conversion

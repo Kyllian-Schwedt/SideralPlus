@@ -20,13 +20,13 @@ export class DataService {
         id: 2,
         title: 'Films',
         medias: this.themoviedb.getGroupMedias("popular", "movie", 1),
-        path: '/movies'
+        path: '/discover/movies'
       },
       {
         id: 3,
         title: 'Series',
         medias: this.themoviedb.getGroupMedias("popular", "tv", 1),
-        path: '/series'
+        path: 'discover/series'
       }
     ];
   }

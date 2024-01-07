@@ -1,5 +1,5 @@
-import {Component, Output} from '@angular/core';
-import {faFilm, faHouse, faList, faNotdef, faSearch, faTv, faUser} from "@fortawesome/free-solid-svg-icons";
+import {Component} from '@angular/core';
+import {faFilm, faHouse, faList, faSearch, faTv} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "../../../interfaces/link";
 import {ActivatedRoute} from "@angular/router";
 
@@ -13,8 +13,7 @@ export class VerticalComponent {
   //create list links
   links: Link[] = [
     //profile, home, search, series, movies, my list
-
-    {name: 'Profile', path: '/profile', icon: faUser, childLinks: [], isCurrent: false},
+    //{name: 'Profile', path: '/profile', icon: faUser, childLinks: [], isCurrent: false}, Not implemented yet
     {name: 'Home', path: '/', icon: faHouse, childLinks: [], isCurrent: false},
     {name: 'Search', path: '/search', icon: faSearch, childLinks: [], isCurrent: false},
     {name: 'Series', path: '/discover/series', icon: faTv, childLinks: [], isCurrent: false},

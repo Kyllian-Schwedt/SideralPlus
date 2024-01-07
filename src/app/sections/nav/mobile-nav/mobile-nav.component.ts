@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import {Link} from "../../../interfaces/link";
-import {faFilm, faHouse, faList, faSearch, faTv, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faFilm, faHouse, faList, faSearch, faTv} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'app-mobile-nav',
@@ -11,8 +11,7 @@ import {faFilm, faHouse, faList, faSearch, faTv, faUser} from "@fortawesome/free
 export class MobileNavComponent {
   links: Link[] = [
     //profile, home, search, series, movies, my list
-
-    {name: 'Profile', path: '/profile', icon: faUser, childLinks: [], isCurrent: false},
+    //{name: 'Profile', path: '/profile', icon: faUser, childLinks: [], isCurrent: false}, Not implemented yet
     {name: 'Home', path: '/', icon: faHouse, childLinks: [], isCurrent: false},
     {name: 'Search', path: '/search', icon: faSearch, childLinks: [], isCurrent: false},
     {name: 'Series', path: '/discover/series', icon: faTv, childLinks: [], isCurrent: false},

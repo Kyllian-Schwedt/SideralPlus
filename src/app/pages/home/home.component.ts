@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit{
     this.collections = this.data.getHomeCollections();
   }
 
+
   ngOnInit() {
     this.spotLightMedia.subscribe(media => {
       console.log(media);

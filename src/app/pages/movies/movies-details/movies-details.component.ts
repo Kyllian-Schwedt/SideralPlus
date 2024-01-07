@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {ThemoviedbService} from "../../../themoviedb.service";
 import {Observable} from "rxjs";
 import {Media} from "../../../interfaces/media";
@@ -19,16 +19,16 @@ export class MoviesDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private themoviedbService: ThemoviedbService) {
   }
 
-ngOnInit(): void {
-  this.route.params.subscribe(params => {
-    this.id = params['id'];
-    this.updateContent();
-  });
-}
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.id = params['id'];
+      this.updateContent();
+    });
+  }
 
-updateContent(): void {
-  this.spotlightMedia = this.themoviedbService.getMediaDetails("movie", this.id);
-  this.similarMedias = this.themoviedbService.getSimilarMedias("movie", this.id, 1 );
-  this.castList = this.themoviedbService.getMediaCast("movie", this.id);
-}
+  updateContent(): void {
+    this.spotlightMedia = this.themoviedbService.getMediaDetails("movie", this.id);
+    this.similarMedias = this.themoviedbService.getSimilarMedias("movie", this.id, 1);
+    this.castList = this.themoviedbService.getMediaCast("movie", this.id);
+  }
 }

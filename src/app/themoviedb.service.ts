@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {Observable, shareReplay} from 'rxjs';
-import { map } from 'rxjs/operators';
+import {map} from 'rxjs/operators';
 import {Media} from "./interfaces/media";
 import {Video} from "./interfaces/video";
 import {Type} from "./interfaces/Type";
 import {Logo} from "./interfaces/logo";
 import {Provider} from "./interfaces/provider/provider";
 
-import { environment } from '../environments/environment';
+import {environment} from '../environments/environment';
 import {Cast} from "./interfaces/cast";
 import {WatchProviders} from "./interfaces/provider/watch-providers";
 import {Season} from "./interfaces/season";
@@ -24,77 +24,121 @@ export class ThemoviedbService {
 
   }
 
-private mapMedia(media: any, type: string = media.media_type): Media {
-  return {
-    id: media.id,
-    title: media.title ? media.title : media.name,
-    isForAdult: media.adult,
-    type: type === "movie" ? "movie" : "tv",
-    image: {
-      poster: media.poster_path,
-      backdrop: media.backdrop_path,
-    },
-    overview: media.overview,
-    releasedAt: media.release_date ? media.release_date : media.first_air_date,
-    language: {
-      original: media.original_language,
-    },
-  };
-}
+  /**
+   * Map a media from the API to a Media interface
+   * @param media
+   * @param type
+   * @returns Media
+   * @private
+   */
+  private mapMedia(media: any, type: string = media.media_type): Media {
+    return {
+      id: media.id,
+      title: media.title ? media.title : media.name,
+      isForAdult: media.adult,
+      type: type === "movie" ? "movie" : "tv",
+      image: {
+        poster: media.poster_path,
+        backdrop: media.backdrop_path,
+      },
+      overview: media.overview,
+      releasedAt: media.release_date ? media.release_date : media.first_air_date,
+      language: {
+        original: media.original_language,
+      },
+    };
+  }
 
-
+  /**
+   * Search medias by query
+   * @param query
+   * @param page
+   * @returns Media[]
+   */
   searchMedias(query: string, page: number): Observable<Media[]> {
     return this.http.get<any>(`${TMDB_API_URL}/3/search/multi?api_key=${TMDB_API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`)
       .pipe(map(response => response.results.filter((media: any) => media.poster_path && media.backdrop_path && media.overview && (media.media_type === "movie" || media.media_type === "tv")).map((media: any) => this.mapMedia(media, media.media_type))));
   }
 
+  /**
+   * Search medias by query and type
+   * @param query
+   * @param type
+   * @param page
+   */
   searchMediasByType(query: string, type: Type, page: number): Observable<Media[]> {
     return this.http.get<any>(`${TMDB_API_URL}/3/search/${type.toString()}?api_key=${TMDB_API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`)
-      .pipe(map(response => response.results.filter((media: any) => media.poster_path && media.backdrop_path && media.overview && (media.media_type === "movie" || media.media_type === "tv" || type !== "multi")).map((media: any) => this.mapMedia(media, media.media_type? media.media_type : type))));
+      .pipe(map(response => response.results.filter((media: any) => media.poster_path && media.backdrop_path && media.overview && (media.media_type === "movie" || media.media_type === "tv" || type !== "multi")).map((media: any) => this.mapMedia(media, media.media_type ? media.media_type : type))));
   }
 
-  searchCompletion(query: string): Observable<string[]> {
-    return this.http.get<any>(`${TMDB_API_URL}/3/search/multi?api_key=${TMDB_API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`)
-      .pipe(map(response => response.results.filter((media: any) => media.media_type === "movie" || media.media_type === "tv").map((media: any) => media.title ? media.title : media.name)));
-  }
-
+  /**
+   * Get similar medias
+   * @param type
+   * @param id
+   * @param page
+   */
   getSimilarMedias(type: Type, id: string, page: number): Observable<Media[]> {
     return this.http.get<any>(`${TMDB_API_URL}/3/${type}/${id}/similar?api_key=${TMDB_API_KEY}&language=en-US&page=${page}`)
-      .pipe(map(response =>response.results.filter((media: any) => media.poster_path && media.backdrop_path && media.overview).map((media: any) => this.mapMedia(media, type))));
+      .pipe(map(response => response.results.filter((media: any) => media.poster_path && media.backdrop_path && media.overview).map((media: any) => this.mapMedia(media, type))));
   }
 
+  /**
+   * Get trending medias
+   * @param type
+   * @param time
+   */
   getTrendingMedias(type: Type, time: string): Observable<Media[]> {
     return this.http.get<any>(`${TMDB_API_URL}/3/trending/${type}/${time}?api_key=${TMDB_API_KEY}`)
       .pipe(map(response => response.results.filter((media: any) => media.poster_path && media.backdrop_path && media.overview).map((media: any) => this.mapMedia(media))));
   }
 
+  /**
+   * Get medias by group
+   * @param name
+   * @param type
+   * @param page
+   */
   getGroupMedias(name: string, type: Type, page: number): Observable<Media[]> {
     const group = name.split("-").join("_");
     return this.http.get<any>(`${TMDB_API_URL}/3/${type}/${group}?api_key=${TMDB_API_KEY}&language=en-US&page=${page}`)
       .pipe(map(response => response.results.filter((media: any) => media.poster_path && media.backdrop_path && media.overview).map((media: any) => this.mapMedia(media, type))));
   }
 
+  /**
+   * Get media details
+   * @param type
+   * @param id
+   */
   getMediaDetails(type: Type, id: string): Observable<Media> {
     return this.http.get<any>(`${TMDB_API_URL}/3/${type}/${id}?api_key=${TMDB_API_KEY}&language=en-US`)
       .pipe(map(media => this.mapMedia(media, type)), shareReplay(1));
   }
 
+  /**
+   * Get media measure
+   * @param type
+   * @param id
+   */
   getMediaMeasure(type: Type, id: string): Observable<number> {
     return this.http.get<any>(`${TMDB_API_URL}/3/${type}/${id}?api_key=${TMDB_API_KEY}&language=en-US`)
       .pipe(map(data => data.runtime ? data.runtime : data.number_of_seasons));
   }
 
+  /**
+   * Get media video
+   * @param type
+   * @param id
+   */
   getMediaVideo(type: Type, id: string): Observable<Video> {
     return this.http.get<any>(`${TMDB_API_URL}/3/${type}/${id}/videos?api_key=${TMDB_API_KEY}&language=en-US`)
       .pipe(map(response => response.results.find((result: any) => (result.type === "Trailer" || result.type === "Teaser") && result.official)));
   }
 
-  getMediasByIds(ids: string[]): Observable<Media[]> {
-    return this.http.get<any>(`${TMDB_API_URL}/3/find/${ids.join(",")}?api_key=${TMDB_API_KEY}&language=en-US&external_source=imdb_id`)
-      .pipe(map(response => response.movie_results.concat(response.tv_results).filter((media: any) => media.poster_path && media.backdrop_path && media.overview).map((media: any) => this.mapMedia(media))));
-
-  }
-
+  /**
+   * Get media logo
+   * @param type
+   * @param id
+   */
   getMediaLogo(type: Type, id: string): Observable<Logo> {
     return this.http.get<any>(`${TMDB_API_URL}/3/${type}/${id}/images?api_key=${TMDB_API_KEY}`)
       .pipe(map(response => {
@@ -109,6 +153,10 @@ private mapMedia(media: any, type: string = media.media_type): Media {
       }));
   }
 
+  /**
+   * Get media spotlight
+   * @param type
+   */
   getMediaSpotlight(type: Type): Observable<Media> {
     console.log(type);
     return this.http.get<any>(`${TMDB_API_URL}/3/trending/${type}/day?api_key=${TMDB_API_KEY}`)
@@ -120,6 +168,11 @@ private mapMedia(media: any, type: string = media.media_type): Media {
       }), shareReplay(1));
   }
 
+  /**
+   * Map a cast from the API to a Cast interface
+   * @param cast
+   * @private
+   */
   private mapCast(cast: any): Cast {
     return {
       adult: cast.adult,
@@ -136,16 +189,28 @@ private mapMedia(media: any, type: string = media.media_type): Media {
       order: cast.order
     };
   }
-getMediaCast(type: Type, id: string, season: number = 1): Observable<Cast[]> {
-  let url = `${TMDB_API_URL}/3/${type}/${id}/credits?api_key=${TMDB_API_KEY}&language=en-US`;
-  if (type === 'tv') {
-    url = `${TMDB_API_URL}/3/${type}/${id}/season/${season}/credits?api_key=${TMDB_API_KEY}&language=en-US`;
+
+  /**
+   * Get media cast
+   * @param type
+   * @param id
+   * @param season
+   */
+  getMediaCast(type: Type, id: string, season: number = 1): Observable<Cast[]> {
+    let url = `${TMDB_API_URL}/3/${type}/${id}/credits?api_key=${TMDB_API_KEY}&language=en-US`;
+    if (type === 'tv') {
+      url = `${TMDB_API_URL}/3/${type}/${id}/season/${season}/credits?api_key=${TMDB_API_KEY}&language=en-US`;
+    }
+    return this.http.get<any>(url)
+      .pipe(map(response => response.cast.filter((cast: any) => cast.profile_path).map(this.mapCast)));
   }
-  return this.http.get<any>(url)
-    .pipe(map(response => response.cast.filter((cast: any) => cast.profile_path).map(this.mapCast)));
-}
 
 
+  /**
+   * Map a provider from the API to a Provider interface
+   * @param provider
+   * @private
+   */
   private mapProvider(provider: any): Provider {
     return {
       logo_path: provider.logo_path,
@@ -156,7 +221,7 @@ getMediaCast(type: Type, id: string, season: number = 1): Observable<Cast[]> {
   }
 
   /**
-  @Deprecated the API just return if the movie is available on the provider but not the link or the price so this is not very useful
+   @Deprecated the API just return if the movie is available on the provider but not the link or the price so this is not very useful
    */
   getWatchProviders(type: Type, id: string): Observable<WatchProviders> {
     return this.http.get<any>(`${TMDB_API_URL}/3/${type}/${id}/watch/providers?api_key=${TMDB_API_KEY}`)
@@ -170,7 +235,11 @@ getMediaCast(type: Type, id: string, season: number = 1): Observable<Cast[]> {
       }));
   }
 
-  //get seasons
+  /**
+   * Map a season from the API to a Season interface
+   * @param season
+   * @private
+   */
   private mapSeason(season: any): Season {
     return {
       air_date: season.air_date,
@@ -184,6 +253,10 @@ getMediaCast(type: Type, id: string, season: number = 1): Observable<Cast[]> {
     };
   }
 
+  /**
+   * Get seasons
+   * @param series_id
+   */
   getSeasons(series_id: string): Observable<Season[]> {
     return this.http.get<any>(`${TMDB_API_URL}/3/tv/${series_id}?api_key=${TMDB_API_KEY}`)
       .pipe(map(response => response.seasons.filter((season: any) => season.poster_path && season.overview).map(this.mapSeason)));

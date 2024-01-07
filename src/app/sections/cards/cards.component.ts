@@ -59,7 +59,6 @@ export class CardsComponent implements OnInit, OnChanges {
   }
 
   scrollToRight(): void {
-    //set incr var to 3 if there are 3 cards left, else set incr var to the number of cards left
     if(!this.ds) return;
     const incr = this.mediaList.length - this.ds.currIndex > 3 ? 3 : (this.mediaList.length-1) - this.ds.currIndex;
     this.ds?.moveTo(this.ds.currIndex + incr);
