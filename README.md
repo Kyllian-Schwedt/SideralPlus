@@ -24,7 +24,7 @@ Picture used from [reddit](https://www.reddit.com/r/DisneyPlus/comments/uphzrh/d
 ![Disney+](readmeData/img.png)
 ![Disney+](readmeData/img-m.png)
 
-made using Tailwind CSS, fontawesome, The Movie DB API, Youtube API (angular module for the videos)
+made using Tailwind CSS, fontawesome, The Movie DB API, Youtube API (angular module for the videos) and ngx-drag-scroll
 
 ## The content of the app
 there is 3 main pages: (in the folder `src/app/pages`)
