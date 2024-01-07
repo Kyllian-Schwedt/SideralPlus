@@ -1,6 +1,6 @@
 <section class="space-y-3 tablet:space-y-4">
   <span class="font-semibold tablet:text-2xl">{{name}}</span>
-  <ul [ngClass]="isOnlyGrid ? 'grid grid-cols-[repeat(2,1fr)] gap-x-2 gap-y-4 tala:grid-cols-[repeat(3,1fr)] laptop:grid-cols-[repeat(4,1fr)] desktop:grid-cols-[repeat(5,1fr)]' : 'hidden tablet:grid'">
+  <ul [ngClass]="isOnlyGrid ? 'grid grid-cols-[repeat(2,1fr)] gap-x-2 gap-y-4 laptop:grid-cols-[repeat(4,1fr)] desktop:grid-cols-[repeat(5,1fr)]' : 'hidden tablet:grid'">
     <app-card *ngFor="let media of medias" [media]="media" [isGrid]="isOnlyGrid"></app-card>
     <app-card *ngFor="let i of [].constructor(loadingCards)" [isVoidCardLoading]="true"></app-card>
   </ul>
