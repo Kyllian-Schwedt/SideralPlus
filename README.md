@@ -19,10 +19,12 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 
 ## Why this design?
-For this design I am inspired by Disney+ (old version of the app beacause for me its better than the new one) :
+For this design I am inspired by Disney+ (old version of the app because for me its better than the new one) :
 Picture used from [reddit](https://www.reddit.com/r/DisneyPlus/comments/uphzrh/disney_new_user_interface_coming_around_march//)
 ![Disney+](readmeData/img.png)
 ![Disney+](readmeData/img-m.png)
+
+made using Tailwind CSS, fontawesome, The Movie DB API, Youtube API (angular module for the videos)
 
 ## The content of the app
 there is 3 main pages: (in the folder `src/app/pages`)
@@ -31,6 +33,9 @@ there is 3 main pages: (in the folder `src/app/pages`)
   - movies and series expend the search result if is movies or series
 - Details page: where you can see the details of a movie or a tv show, the cast and the similar movies or tv shows (of its series you can see the seasons if there is registered in the api)
 - My list page: where you can see the movies and tv shows that you have added to your list
+
+(the header is a video if available or a picture of the movie / series)
+
 
 ## The components of the app
 there is divided in 3 categories: (in the folder `src/app/components`)
