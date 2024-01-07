@@ -5,7 +5,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 before run the project, you need to install the dependencies, run `npm install` in the root folder of the project.
-then you need to setup your environment variables. create a file called `.env` in the root folder of the project and add the following `.env.exemple` content:
+then you need to set up your environment variables. create a file called `.env` in the root folder of the project and add the following `.env.exemple` content:
 ```
 # Data source
 TMDB_API_KEY=""
@@ -51,7 +51,7 @@ there is 3 services (in the folder `src/app/services`)
 
 ## Peview of the app with explenation : 
 ### Home page
-- the header show a youtube video on background and some information of a trending movie / series
+- the header show a YouTube video on background and some information of a trending movie / series
 - on the trending section (form film) there is a card with ability to access to the search for more movies
 ![Home page](readmeData/prev/home.png)
 ### Search page
@@ -60,7 +60,7 @@ there is 3 services (in the folder `src/app/services`)
 ![Search page](readmeData/prev/search.png)
 
 ### Details page
-- the header show a youtube video on background and some information of the movie / series (posibility to add to the list (on the screen there is already added))
+- the header show a YouTube video on background and some information of the movie / series (possibility to add to the list (on the screen there is already added))
 - on the similar section there is the similar movies / series of the movie / series
 - on the cast section there is the cast of the movie / series
 
